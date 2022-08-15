@@ -8,7 +8,7 @@ const {
   postUsers,
   putUser,
   deleteUsers,
-} = require("../Controllers/users.controller");
+} = require("../controllers/users.controller");
 
 //* Variables
 const router = Router();
