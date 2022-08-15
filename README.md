@@ -5,6 +5,11 @@
 ```sh
 npm install
 ```
+## Ejecutar(Necesario Nodemon)
+
+```sh
+npm run start
+```
 
 ## NPM:
 
