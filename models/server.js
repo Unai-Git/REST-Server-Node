@@ -2,6 +2,9 @@
 const express = require("express");
 const cors = require("cors");
 
+//*  Importaciones Internas
+const { dbConnection } = require("../database/config");
+
 //* Clase Server
 class Server {
   // Constructor
@@ -12,8 +15,14 @@ class Server {
     this.usersPath = "/api/users";
 
     // LLamadas a las funciones
+    this.connectDB();
     this.middlewares();
     this.routes();
+  }
+
+  // Conectarse a la Base de Datos
+  async connectDB() {
+    await dbConnection();
   }
 
   // Middleware

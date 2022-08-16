@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "964f39ba-df67-451c-b3d6-b134dde59f01",
+		"name": "REST_Server_Node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21682859"
+	},
+	"item": [
+		{
+			"name": "Get_Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Users_Paginated",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/paginated?since=2&?limit=4",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"paginated"
+					],
+					"query": [
+						{
+							"key": "since",
+							"value": "2"
+						},
+						{
+							"key": "?limit",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_User_By_Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/62fb693f610b3cca1c06b694",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"62fb693f610b3cca1c06b694"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert_User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"UserTest\",\r\n    \"email\": \"UserTest@email.es\",\r\n    \"pass\": \"123456\",\r\n    \"rol\": \"User\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/users/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_User_By_Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"UserTest4\",\r\n    \"email\": \"UserTest4@email.es\",\r\n    \"pass\": \"qwerty\",\r\n    \"rol\": \"User\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/users/62fb7ac1c293e2c86b868fe9",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"62fb7ac1c293e2c86b868fe9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_User_By_Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/62fb7ac1c293e2c86b868fe9",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"62fb7ac1c293e2c86b868fe9"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
