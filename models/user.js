@@ -37,7 +37,9 @@ const UserSchema = Schema({
 //* Sobrescribir método toJSON
 UserSchema.methods.toJSON = function () {
   //Separar la version y la contraseña del resto del Usuario
-  const { __v, pass, ...user } = this.toObject();
+  const { __v, pass, _id, ...user } = this.toObject();
+  //Cambiar nombre del _id por uid
+  user.uid = _id;
   return user;
 };
 

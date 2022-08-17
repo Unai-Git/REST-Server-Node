@@ -1,8 +1,9 @@
 //* Importaciones de terceros
 const { Router } = require("express");
-const { check } = require("express-validator");
+const { body, param } = require("express-validator");
 
 //* Importaciones Internas
+// Controladores
 const {
   getUsers,
   getUsersPaginated,
@@ -11,12 +12,17 @@ const {
   putUser,
   deleteUsers,
 } = require("../controllers/users.controller");
+
+// Validaciones y Middlewares
 const {
   isValidRol,
   isValidEmail,
   isValidId,
 } = require("../database/db-validators");
 const { fieldsValidation } = require("../middlewares/fields-validation");
+const validateJWT = require("../middlewares/jwt-validation");
+const {isAdminRol, haveRol} = require("../middlewares/rol-validation");
+
 
 //* Variables
 const router = Router();
@@ -36,13 +42,13 @@ router.get("/:id", getUsersById);
 router.post(
   "/",
   [
-    check("name", "El nombre no es valido.").not().isEmpty(),
-    check("pass", "La contraseña debe tener más de 5 caracteres.").isLength({
+    body("name", "El nombre no es valido.").not().isEmpty(),
+    body("pass", "La contraseña debe tener más de 5 caracteres.").isLength({
       min: 6,
     }),
-    check("email", "El formato del correo no es valido.").isEmail(),
-    check("email").custom(isValidEmail),
-    check("rol").custom(isValidRol), //? Es es igual que check("rol").custom((rol)=>{isValidRol(rol)})
+    body("email", "El formato del correo no es valido.").isEmail(),
+    body("email").custom(isValidEmail),
+    body("rol").custom(isValidRol), //? Es es igual que check("rol").custom((rol)=>{isValidRol(rol)})
     fieldsValidation,
   ],
   postUsers
@@ -52,12 +58,12 @@ router.post(
 router.put(
   "/:id",
   [
-    check("id", "El id no es valido.")
+    param("id", "El id no es valido.")
       .isMongoId()
       .bail()
       .custom(isValidId)
       .bail(),
-    check("rol").optional().custom(isValidRol),
+    body("rol").optional().custom(isValidRol),
     fieldsValidation,
   ],
   putUser
@@ -67,7 +73,10 @@ router.put(
 router.delete(
   "/:id",
   [
-    check("id", "El id no es valido.")
+    validateJWT,
+    //isAdminRol,
+    haveRol("Admin", "Sales"),
+    param("id", "El id no es valido.")
       .isMongoId()
       .bail()
       .custom(isValidId)

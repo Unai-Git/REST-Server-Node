@@ -13,6 +13,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.usersPath = "/api/users";
+    this.authPath = "/api/auth";
 
     // LLamadas a las funciones
     this.connectDB();
@@ -40,6 +41,7 @@ class Server {
   // Manejo de Rutas
   routes() {
     // Asociar fichero de rutas a una ruta especifica
+    this.app.use(this.authPath, require("../routes/auth.routes"));
     this.app.use(this.usersPath, require("../routes/user.routes"));
   }
 
