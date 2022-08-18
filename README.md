@@ -21,3 +21,4 @@ npm run start
 - **express-validator [^6.14.2]** Validar campos.
 - **mongoose [^6.5.2]** Escribir consultas para una base de datos de MongooDB.
 - **jsonwebtoken [^8.5.1]** Generar tokens para autenticación.
+- **google-auth-library [^8.2.0]** Verificar el Google ID Token en el lado del servidor.

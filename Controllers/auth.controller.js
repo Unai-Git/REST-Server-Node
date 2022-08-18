@@ -4,6 +4,7 @@ const bcryptjs = require("bcryptjs");
 //*  Importaciones Internas
 const User = require("../models/user");
 const { generateJWT } = require("../helpers/generate-jwt");
+const { googleVerify } = require("../helpers/google-verify");
 
 const login = async (req, res) => {
   //Recuperar correo y contraseña
@@ -51,5 +52,56 @@ const login = async (req, res) => {
   }
 };
 
+//* Google
+const googleSignIn = async (req, res) => {
+  // Recuperar id token
+  const { id_token } = req.body;
+
+  try {
+    const { name, img, email } = await googleVerify(id_token);
+
+    let user = await User.findOne({ email });
+
+    // Crear usuario en el caso de que no exista
+    if (!user) {
+      // Datos del usuario de google
+      const data = {
+        name,
+        email,
+        rol: "User",
+        pass: " ",
+        img,
+        google: true,
+      };
+      // Crear un nuevo usuario
+      user = new User(data);
+
+      // Guardar/Insertar el usuario
+      await user.save();
+    }
+
+    // Comprobar si el usuario tiene un status false
+    if (!user.status) {
+      return res.status(401).json({
+        msg: "Usuario bloqueado.",
+      });
+    }
+    console.log(user.id);
+    //Generar el JWT
+    const token = await generateJWT(user.id);
+
+    // Enviar respuesta
+    res.json({
+      user,
+      token,
+    });
+  } catch (error) {
+    res.status(400).json({
+      msg: "Error al registrar un usuario google.",
+      error,
+    });
+  }
+};
+
 //* Exportar Funciones
-module.exports = { login };
+module.exports = { login, googleSignIn };
