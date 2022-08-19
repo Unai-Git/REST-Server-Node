@@ -1,4 +1,6 @@
 //* Importaciones Internas
+const Category = require("../models/category");
+const Product = require("../models/product");
 const Rol = require("../models/role");
 const User = require("../models/user");
 
@@ -25,11 +27,35 @@ const isValidEmail = async (email = "") => {
 //Validar Id
 const isValidId = async (id) => {
   //Comprobar que el id es el mismo que en la BBDD
-  const idExists = await User.findOne({id});
+  const idExists = await User.findById(id);
+  if (!idExists) {
+    throw new Error(`El id ${id} no existe.`);
+  }
+};
+
+// Validar existe categoría
+const existsCategory = async (id) => {
+  //Comprobar que el id es el mismo que en la BBDD
+  const idExists = await Category.findById(id);
+  if (!idExists) {
+    throw new Error(`El id ${id} no existe.`);
+  }
+};
+
+// Validar existe producto
+const existsProduct = async (id) => {
+  //Comprobar que el id es el mismo que en la BBDD
+  const idExists = await Product.findById(id);
   if (!idExists) {
     throw new Error(`El id ${id} no existe.`);
   }
 };
 
 //* Exportar validaciones
-module.exports = { isValidRol, isValidEmail, isValidId };
+module.exports = {
+  isValidRol,
+  isValidEmail,
+  isValidId,
+  existsCategory,
+  existsProduct,
+};
