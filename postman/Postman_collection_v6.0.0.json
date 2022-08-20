@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "964f39ba-df67-451c-b3d6-b134dde59f01",
+		"name": "REST_Server_Node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21682859"
+	},
+	"item": [
+		{
+			"name": "Get_Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Users_Paginated",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/paginated?since=2&?limit=4",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"paginated"
+					],
+					"query": [
+						{
+							"key": "since",
+							"value": "2"
+						},
+						{
+							"key": "?limit",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_User_By_Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/62fb693f610b3cca1c06b694",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"62fb693f610b3cca1c06b694"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert_User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"UserTest\",\r\n    \"email\": \"UserTest@email.es\",\r\n    \"pass\": \"123456\",\r\n    \"rol\": \"User\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/users/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_User_By_Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"UserTest4\",\r\n    \"email\": \"UserTest4@email.es\",\r\n    \"pass\": \"qwerty\",\r\n    \"rol\": \"User\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/users/62fb7ac1c293e2c86b868fe9",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"62fb7ac1c293e2c86b868fe9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_User_By_Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA3MjI1NTksImV4cCI6MTY2MDczNjk1OX0.cf_vqj5h7MKRxgwtNU_hksbW9PK_Dq6k-L9lc0j9-MA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}api/users/62fb6948610b3cca1c06b698",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"62fb6948610b3cca1c06b698"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"user2@email.es\",\r\n    \"pass\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/auth/login",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Google_Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_token\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/auth/google",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"auth",
+						"google"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/categories",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Category_By_Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/categories/62ff376d251417fd3c26fbd9",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categories",
+						"62ff376d251417fd3c26fbd9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert_Category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA4OTg0ODEsImV4cCI6MTY2MDkxMjg4MX0.IJda-fPEldUUKR0E69QTC7gj9SJNstrcuftSsvag8UM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"verdura\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/categories",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_Category",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA4OTg0ODEsImV4cCI6MTY2MDkxMjg4MX0.IJda-fPEldUUKR0E69QTC7gj9SJNstrcuftSsvag8UM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"carne\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/categories/62ff376d251417fd3c26fbd9",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categories",
+						"62ff376d251417fd3c26fbd9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_Category",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA4OTg0ODEsImV4cCI6MTY2MDkxMjg4MX0.IJda-fPEldUUKR0E69QTC7gj9SJNstrcuftSsvag8UM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}api/categories/62ff4ff746353ab544520a78",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categories",
+						"62ff4ff746353ab544520a78"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_All_Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/products",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Product_By_Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/products/62ff4ff746353ab544520a78",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"products",
+						"62ff4ff746353ab544520a78"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA5MDQyODAsImV4cCI6MTY2MDkxODY4MH0.so5hVO4tmmlzmasw7JBJgj62c8_lX688lgiiXuEfGhk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Tomate\",\r\n    \"category\": \"62ff502c46353ab544520a80\",\r\n    \"price\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/products",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA5MDQyODAsImV4cCI6MTY2MDkxODY4MH0.so5hVO4tmmlzmasw7JBJgj62c8_lX688lgiiXuEfGhk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"queso\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/products/62ff6b680a17f2fbb52f036c",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"products",
+						"62ff6b680a17f2fbb52f036c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA5MDQyODAsImV4cCI6MTY2MDkxODY4MH0.so5hVO4tmmlzmasw7JBJgj62c8_lX688lgiiXuEfGhk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}api/products/62ff6b680a17f2fbb52f036c",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"products",
+						"62ff6b680a17f2fbb52f036c"
+					],
+					"query": [
+						{
+							"key": "x-token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmZiNjk0ODYxMGIzY2NhMWMwNmI2OTgiLCJpYXQiOjE2NjA5MDQyODAsImV4cCI6MTY2MDkxODY4MH0.so5hVO4tmmlzmasw7JBJgj62c8_lX688lgiiXuEfGhk",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/search/products/etomate",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"search",
+						"products",
+						"etomate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload_File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": "/C:/Users/unai_/Downloads/168882.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}api/uploads",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"uploads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_Image",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": "/C:/Users/unai_/Downloads/168882.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}api/uploads/users/62fb693f610b3cca1c06b694",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"uploads",
+						"users",
+						"62fb693f610b3cca1c06b694"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_Products",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": "/C:/Users/unai_/Downloads/leche.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}api/uploads/products/62ff6b02d4ae45f5b69d8b6e",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"uploads",
+						"products",
+						"62ff6b02d4ae45f5b69d8b6e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show_Image",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}api/uploads/users/62fb693f610b3cca1c06b694",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"uploads",
+						"users",
+						"62fb693f610b3cca1c06b694"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

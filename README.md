@@ -1,5 +1,14 @@
 <h1 align="center" > REST-Server-Node </h1>
 
+<hr>
+
+## Contenido del REST-SERVER:
+- Operaciones CRUD: Usuarios(con roles), productos y categorías.
+- MongoDB establecer conexión, crear modelos(Usuarios,productos y categorías) con sus validaciones.
+- Uso de Google Sign-In.
+- Buscador interno.
+- Subir archivos(Imágenes,Texto).
+
 ## Instalar:
 
 ```sh
