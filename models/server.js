@@ -1,6 +1,7 @@
 //* Importaciones de terceros
 const express = require("express");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 
 //*  Importaciones Internas
 const { dbConnection } = require("../database/config");
@@ -18,6 +19,7 @@ class Server {
       categoriesPath: "/api/categories",
       productsPath: "/api/products",
       searchPath: "/api/search",
+      uploadPath: "/api/uploads",
     };
 
     // LLamadas a las funciones
@@ -41,6 +43,15 @@ class Server {
 
     // Evitar que la carpeta estática "public" forme parte de la URL
     this.app.use(express.static("public"));
+
+    // FileUpload Cargar archivos
+    this.app.use(
+      fileUpload({
+        useTempFiles: true,
+        tempFileDir: "/tmp/",
+        createParentPath: true, // Si no existe la capeta la crea (Cuidado con esto)
+      })
+    );
   }
 
   // Manejo de Rutas
@@ -54,6 +65,7 @@ class Server {
     );
     this.app.use(this.paths.productsPath, require("../routes/products.routes"));
     this.app.use(this.paths.searchPath, require("../routes/search.routes"));
+    this.app.use(this.paths.uploadPath, require("../routes/uploads.routes"));
   }
 
   // Puerto de escucha

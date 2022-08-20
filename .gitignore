@@ -1,3 +1,10 @@
+#Node Modules
 /node_modules
 
+#Variables de Entorno
 .env
+
+#Uploads
+uploads/img
+uploads/users
+uploads/products

@@ -22,3 +22,5 @@ npm run start
 - **mongoose [^6.5.2]** Escribir consultas para una base de datos de MongooDB.
 - **jsonwebtoken [^8.5.1]** Generar tokens para autenticación.
 - **google-auth-library [^8.2.0]** Verificar el Google ID Token en el lado del servidor.
+- **express-fileupload [^1.4.0]** Subir archivos.
+- **uuid [^8.3.2]** Crear Identificadores únicos.
